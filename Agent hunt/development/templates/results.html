@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Results</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    </head>
+    <body>
+        <header class="bg-primary py-3 text-white">
+            <h1 class="text-center">Top Agents and Brokerages</h1>
+            <p class="text-center">Market ID: {{ market_id }}</p>
+        </header>
+        <div class="container my-5">
+            {% if agents %}
+                <table class="table table-striped mx-auto">
+                    <thead>
+                        <tr>
+                            <th>Rank</th>
+                            <th>Agent ID</th>
+                            <th>Agent Name</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for i in range(n) %}
+                        <tr>
+                            <td>{{ i + 1 }}</td>
+                            <td>{{ agents[i][0] }}</td>
+                            <td>{{ agents[i][1] }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            {% else %}
+                <p class="text-center">No agents found</p>
+            {% endif %}
+            <a href="/" class="btn btn-primary mt-3">Go Back</a>
+        </div>
+    </body>
+</html>
