@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request
 import psycopg2
+from collections import Counter
 
 app = Flask(__name__)
 
@@ -35,12 +36,13 @@ def results():
         """, (market_id, n)
     )
     agents = cursor.fetchall()
-
-    return render_template("results.html", agents=agents, market_id=market_id, n=n)
-
-@app.route("/relationship")
-def graph(market_id):
-    return render_template("relationship.html")
+    l = []
+    for i in range(n):
+        l.append(agents[i][1])
+    c = Counter(l)
+    x = c.keys()
+    y = c.values()
+    return render_template("results.html", agents=agents, market_id=market_id, n=n, xl=list(x), yl=list(y))
 
 if __name__ == '__main__':
     app.run(debug=True)

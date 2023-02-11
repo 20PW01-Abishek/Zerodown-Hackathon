@@ -45,16 +45,8 @@
         <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
     
         <script>
-
-            var agents = {agents};
-            var count =  {count} ;
-            var x = [];
-            var y = [];
-
-            for (var i = 0; i < agents.length; i++) {
-                x.push(agents[i][1]);
-                y.push(count[i]);
-            }
+            var x = {{xl|tojson}};
+            var y = {{yl|tojson}};
 
             var data = [{
                 x: x,
@@ -63,7 +55,7 @@
             }];
 
             var layout = {
-                title: 'Agent',
+                title: 'Relationship graph',
                 xaxis: {
                     title: 'Agent Name',
                     showticklabels: true,
@@ -74,7 +66,7 @@
                     }
                 },
                 yaxis: {
-                    title: '',
+                    title: 'Agent listings',
                     showticklabels: true,
                     tickangle: 0,
                     tickfont: {
