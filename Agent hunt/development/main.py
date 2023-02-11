@@ -42,7 +42,16 @@ def results():
     c = Counter(l)
     x = c.keys()
     y = c.values()
-    return render_template("results.html", agents=agents, market_id=market_id, n=n, xl=list(x), yl=list(y))
+
+    lb = []
+    for i in range(n):
+        lb.append(agents[i][3])
+    cb = Counter(lb)
+    xb = cb.keys()
+    yb = cb.values()
+    print(xb,yb,x,y)
+
+    return render_template("results.html", agents=agents, market_id=market_id, n=n, xl=list(x), yl=list(y), xb=list(xb), yb=list(yb))
 
 if __name__ == '__main__':
     app.run(debug=True)
