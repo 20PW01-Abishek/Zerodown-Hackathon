@@ -25,7 +25,7 @@ def results():
     cursor = conn.cursor()
     cursor.execute(
         """
-        SELECT agent_info.id, agent_info.first_name, brokerage.id, brokerage.name
+        SELECT agent_info.id, agent_info.first_name, brokerage.id, brokerage.name, agent_listing.listing_price
         FROM agent_listing
         JOIN agent_info ON agent_listing.agent_id = agent_info.id
         JOIN home_info ON agent_listing.home_id = home_info.id
