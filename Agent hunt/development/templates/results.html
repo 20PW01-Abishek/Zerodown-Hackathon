@@ -9,7 +9,7 @@
             <h1 class="text-center">Top Agents and Brokerages</h1>
             <p class="text-center">Market ID: {{ market_id }}</p>
             <center>
-                <a href="/relationship" class="btn btn-secondary mt-3">Go Back</a>
+                <a href="/" class="btn btn-secondary mt-3">Go Back</a>
             </center>
         </header>
         <div class="container my-5">
@@ -41,5 +41,50 @@
             {% endif %}
             <a href="/" class="btn btn-primary mt-3">Go Back</a>
         </div>
+        <div id="plot"></div>
+        <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    
+        <script>
+
+            var agents = {agents};
+            var count =  {count} ;
+            var x = [];
+            var y = [];
+
+            for (var i = 0; i < agents.length; i++) {
+                x.push(agents[i][1]);
+                y.push(count[i]);
+            }
+
+            var data = [{
+                x: x,
+                y: y,
+                type: 'bar'
+            }];
+
+            var layout = {
+                title: 'Agent',
+                xaxis: {
+                    title: 'Agent Name',
+                    showticklabels: true,
+                    tickangle: 0,
+                    tickfont: {
+                        size: 10,
+                        color: 'black'
+                    }
+                },
+                yaxis: {
+                    title: '',
+                    showticklabels: true,
+                    tickangle: 0,
+                    tickfont: {
+                        size: 10,
+                        color: 'black'
+                    }
+                }
+            };
+
+            Plotly.newPlot('plot', data, layout)
+        </script>
     </body>
 </html>

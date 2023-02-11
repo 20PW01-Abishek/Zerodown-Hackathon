@@ -39,8 +39,8 @@ def results():
     return render_template("results.html", agents=agents, market_id=market_id, n=n)
 
 @app.route("/relationship")
-def graph():
-    return render_template("relationship.html", id=market_id)
+def graph(market_id):
+    return render_template("relationship.html")
 
 if __name__ == '__main__':
     app.run(debug=True)
