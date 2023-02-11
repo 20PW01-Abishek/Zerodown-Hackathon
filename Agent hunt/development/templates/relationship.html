@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+</head>
+<body>
+    <header class="bg-primary py-3 text-white">
+        <h1 class="text-center">Top Agents and Brokerages</h1>
+        <p class="text-center">Market ID: {{ id }}</p>
+    </header>
+    <div id="plot"></div>
+
+    <script>
+
+        var Plotly = window.Plotly;
+        var x = [agents];
+        var y = [count];
+
+        var data = [{
+          x: x,
+          y: y,
+          type: 'bar'
+        }];
+
+
+        var layout = {
+          title: '',
+          xaxis: {
+            title: 'name',
+            showticklabels: true,
+            tickangle: 0,
+            tickfont: {
+              size: 10,
+              color: 'black'
+            }
+          },
+          yaxis: {
+            title: '"',
+            showticklabels: true,
+            tickfont: {
+              size: 10,
+              color: 'black'
+            }
+          }
+        };
+
+        Plotly.newPlot('plot', data, layout);
+    </script>
+
+</body>
+</html>
